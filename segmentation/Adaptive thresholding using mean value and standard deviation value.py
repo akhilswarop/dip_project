@@ -1,7 +1,7 @@
 import cv2
 
 # Load the image in grayscale
-image = cv2.imread('sample.jpeg', cv2.IMREAD_GRAYSCALE)
+image = cv2.imread('Test Images/test_1.jpg', cv2.IMREAD_GRAYSCALE)
 
 # Define the block size for adaptive thresholding
 block_size = 11  # Adjust the block size as needed

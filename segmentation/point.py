@@ -17,7 +17,7 @@ def perform_thresholding(input_path, output_path, threshold=127):
   cv2.waitKey(0)
 
 # Example usage
-input_path = "Test Images\test_1.jpg"
+input_path = "Test Images/test_1.jpg"
 output_path = "Test Images\Output\leonal\point thresholded_image.jpg"
 
 perform_thresholding(input_path, output_path)

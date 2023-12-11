@@ -35,7 +35,7 @@ def perform_closing(input_path, output_path):
 
 
 # Example usage
-input_path = "Test Images\test_1.jpg"
+input_path = "Test Images/test_1.jpg"
 output_path_opening = "Test Images\Output\leonal\opening_result.jpg"
 output_path_closing = "Test Images\Output\leonal\closing_result.jpg"
 

@@ -30,8 +30,8 @@ def perform_line_thresholding(input_path, output_path):
 
 
 # Example usage
-input_path = "Test Images\test_1.jpg"
-output_path = "Test Images\Output\leonal\thresholded_lines.jpg"
+input_path = "Test Images/test_1.jpg"
+output_path = "Test Images\Output\leonal/thresholded_lines.jpg"
 
 perform_line_thresholding(input_path, output_path)
 
