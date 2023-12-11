@@ -20,8 +20,8 @@ def perform_edge_detection(input_path, output_path):
 
 
 # Usage example
-input_path = "image.jpg"
-output_path = "edges.jpg"
+input_path = "Test Images\test_1.jpg"
+output_path = "Test Images\Output\leonal\edges.jpg"
 
 perform_edge_detection(input_path, output_path)
 
