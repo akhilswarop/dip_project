@@ -1,0 +1,43 @@
+import cv2
+import numpy as np
+
+def perform_thresholding(input_path, output_path):
+    # Read the image
+    image = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)
+
+    if image is not None:
+        # Calculate the mean intensity of the image
+        mean_intensity = np.mean(image)
+
+        # Get the height and width of the image
+        height, width = image.shape
+
+        # Create a binary image with the same size as the original image
+        binary_image = np.zeros((height, width), dtype=np.uint8)
+
+        # Set the threshold value
+        threshold_value = mean_intensity
+
+        # Apply thresholding to create a binary image
+        for i in range(height):
+            for j in range(width):
+                pixel_value = image[i, j]
+
+                if pixel_value >= threshold_value:
+                    binary_image[i, j] = 255
+
+        # Display the original and binary images using cv2.imshow
+        cv2.imshow('Original Image', image)
+        cv2.imshow('Binary Image', binary_image)
+        cv2.waitKey(0)
+
+        # Save the binary image
+        cv2.imwrite(output_path, binary_image)
+
+    else:
+        print(f"Failed to load the image '{input_path}'.")
+
+# Example usage
+input_path = 'Test Images/test_1.jpg'
+output_path = 'Test Images/Output/Hanish/output_image.jpg'
+perform_thresholding(input_path, output_path)

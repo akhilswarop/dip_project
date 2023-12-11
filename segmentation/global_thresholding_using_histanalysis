@@ -1,0 +1,68 @@
+import cv2
+import numpy as np
+
+def perform_iterative_thresholding(input_path, output_path):
+    # Load the grayscale image
+    image = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)
+
+    # Check if the image is loaded successfully
+    if image is not None:
+        height, width = image.shape
+
+        histogram = np.zeros(256, dtype=int)
+        for i in range(height):
+            for j in range(width):
+                pixel_value = image[i, j]
+                histogram[pixel_value] += 1
+
+        initial_threshold = 128
+        threshold = initial_threshold
+
+        while True:
+            below_threshold_sum = 0
+            below_threshold_count = 0
+            above_threshold_sum = 0
+            above_threshold_count = 0
+
+            for i in range(256):
+                if i < threshold:
+                    below_threshold_sum += i * histogram[i]
+                    below_threshold_count += histogram[i]
+                else:
+                    above_threshold_sum += i * histogram[i]
+                    above_threshold_count += histogram[i]
+
+            if below_threshold_count == 0 or above_threshold_count == 0:
+                break
+
+            below_threshold_mean = below_threshold_sum / below_threshold_count
+            above_threshold_mean = above_threshold_sum / above_threshold_count
+
+            new_threshold = int((below_threshold_mean + above_threshold_mean) / 2)
+
+            if new_threshold == threshold:
+                break
+
+            threshold = new_threshold
+
+        binary_image = np.zeros((height, width), dtype=np.uint8)
+        for i in range(height):
+            for j in range(width):
+                pixel_value = image[i, j]
+                if pixel_value >= threshold:
+                    binary_image[i, j] = 255
+
+        # Display the binary image using cv2.imshow
+        cv2.imshow('Original Image', image)
+        cv2.imshow('Binary Image', binary_image)
+        cv2.waitKey(0)
+
+        # Save the binary image
+        cv2.imwrite(output_path, binary_image)
+    else:
+        print(f"Failed to load the image '{input_path}'.")
+
+# Example usage
+input_path = 'Test Images/test_3.jpg'
+output_path = 'Test Images/Output/Hanish/output_image.jpg'
+perform_iterative_thresholding(input_path, output_path)
