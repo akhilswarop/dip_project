@@ -1,1 +1,1 @@
-# dip_project
+# ASL Detection Model
