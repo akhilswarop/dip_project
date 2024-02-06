@@ -27,11 +27,11 @@ def perform_line_thresholding(input_path, output_path):
 
     # Save the output image
     cv2.imwrite(output_path, line_image)
-
+    cv2.imshow(output_path,line_image)
 
 # Example usage
 input_path = "Test Images/test_1.jpg"
-output_path = "Test Images\Output\leonal/thresholded_lines.jpg"
+output_path = "Test Images/Output/leonal/thresholded_lines.jpg"
 
 perform_line_thresholding(input_path, output_path)
 
